@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { Route } from "../Route";
+import { Route } from "../route_interface";
 import { Controller } from "../../controller/Controller";
 
 export const getProductListRoute: Route = {
@@ -16,6 +16,8 @@ export const getProductListRoute: Route = {
 
     if (this.url === reqURL) {
       result = true;
+    } else {
+      console.log("Request method is incorrect");
     }
 
     return result;

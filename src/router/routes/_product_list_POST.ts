@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { Route } from "../Route";
+import { Route } from "../route_interface";
 import { Controller } from "../../controller/Controller";
 
 export const addToProductListRoute: Route = {
