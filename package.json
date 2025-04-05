@@ -2,9 +2,9 @@
   "name": "restful_api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "app.ts",
   "scripts": {
-    "start": "npx ts-node src/config/server.ts",
+    "start": "npx ts-node src/app.ts",
     "dev": "nodemon"
   },
   "keywords": [],
@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@types/express": "^5.0.1",
     "@types/node": "^22.14.0",
     "concurrently": "^9.1.2",
     "nodemon": "^3.1.9",
