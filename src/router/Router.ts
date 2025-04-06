@@ -1,6 +1,7 @@
 import { IncomingMessage, ServerResponse } from "http";
 import {Route} from "./route_interface";
 import { routes } from "./routes/_all_routes";
+import {setExtension} from "../config/set_extension";
 
 
 export class Router {
@@ -15,7 +16,12 @@ export class Router {
     if (route) {
       route.controller(req, res);
     } else {
-      console.log("There are no such routes");
+      res.statusCode = 404;
+      res.setHeader( "Content-Type", setExtension(".json") );
+      res.end( JSON.stringify({
+        error: "Route not found",
+        availableRoutes: routes.map(route => `${route.method} ${route.url}`)
+      }));
     }
   }
 }

@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
-type TUrl = string | RegExp;
+export type TUrl = string | RegExp;
 type TRequest = "GET" | "POST" | "PUT" | "COPY" | "DELETE" | "MOVE";
 
 export interface Route {

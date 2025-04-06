@@ -1,10 +1,11 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { Route } from "../route_interface";
 import { Controller } from "../../controller/Controller";
+import {isMatchesWithString} from "../check_url";
 
 export const getProductListRoute: Route = {
 
-  url: "api/product_list/",
+  url: "/api/product_list/",
   method: "GET",
 
   controller: function(req: IncomingMessage, res: ServerResponse): void {
@@ -12,14 +13,6 @@ export const getProductListRoute: Route = {
   },
 
   isMatchesWithURL: function(reqURL: string): boolean {
-    let result: boolean = false;
-
-    if (this.url === reqURL) {
-      result = true;
-    } else {
-      console.log("Request method is incorrect");
-    }
-
-    return result;
+    return isMatchesWithString(reqURL, this.url);
   }
 }

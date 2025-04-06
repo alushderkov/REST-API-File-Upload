@@ -1,10 +1,11 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { Route } from "../route_interface";
 import { Controller } from "../../controller/Controller";
+import {isMatchesWithRegExp} from "../check_url";
 
 export const addToProductListRoute: Route = {
 
-  url: "api/product_list/",
+  url: /^\/api\/product_list\/[a-zA-Z0-9\- ]+,\d+\$,[a-zA-Z0-9 \-]+$/,
   method: "POST",
 
   controller: function(req: IncomingMessage, res: ServerResponse): void {
@@ -12,12 +13,6 @@ export const addToProductListRoute: Route = {
   },
 
   isMatchesWithURL: function(reqURL: string): boolean {
-    let result: boolean = false;
-
-    if (this.url === reqURL) {
-      result = true;
-    }
-
-    return result;
+    return isMatchesWithRegExp(reqURL, this.url);
   }
 }
