@@ -1,52 +1,46 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { throwError } from "./error";
-import { setExtension } from "../../config/set_extension";
+import { throwError } from "../../config/program_settings/error";
+import { setExtension } from "../../config/program_settings/set_extension";
 import {copyByURL, deleteByURL, moveByURL} from "../../models/file_representation";
 
 export function workWithFile(req: IncomingMessage, res: ServerResponse): void {
 
   function deleteFile(ext: string): void {
-    const contentType: string = setExtension(ext);
     const whenFileWasDeleted: Promise<string> = deleteByURL(req);
-    let message: string;
 
     whenFileWasDeleted.then(
-      result => sendResponse(result, contentType, 200),
+      result => sendResponse(result, ext, 200),
       error => {
-        throwError(res, error, 500);
+        throwError(res, error, 500, ext);
       }
     );
   }
 
   function moveFile(ext: string): void {
-    const contentType: string = setExtension(ext);
     const whenFileWasMoved: Promise<string> = moveByURL(req);
-    let message: string;
 
     whenFileWasMoved.then(
-      result => sendResponse(result, contentType, 201),
+      result => sendResponse(result, ext, 201),
       error => {
-        throwError(res, error, 501);
+        throwError(res, error, 501, ext);
       }
     );
   }
 
   function copyFile(ext: string): void {
-    const contentType: string = setExtension(ext);
     const whenFileWasCopied: Promise<string> = copyByURL(req);
-    let message: string;
 
     whenFileWasCopied.then(
-      result => sendResponse(result, contentType, 202),
+      result => sendResponse(result, ext, 202),
       error => {
-        throwError(res, error, 502);
+        throwError(res, error, 502, ext);
       }
     );
   }
 
-  function sendResponse(message: string, contentType: string, statusCode: number) {
+  function sendResponse(message: string, ext: string, statusCode: number) {
     res.statusCode = statusCode;
-    res.setHeader("Content-Type", contentType);
+    res.setHeader( "Content-Type", setExtension(ext) );
     res.end( JSON.stringify(message) );
   }
 

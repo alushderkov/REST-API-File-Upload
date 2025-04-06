@@ -1,7 +1,6 @@
 import http from "http";
 import { IncomingMessage, ServerResponse } from "http";
-import path from "path";
-import { Router } from "./router/Router";
+import { Router } from "./src/router/Router";
 
 const PORT: number = +(process.env.PORT || 5500);
 

@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from "http";
 import {Route} from "./route_interface";
 import { routes } from "./routes/_all_routes";
-import {setExtension} from "../config/set_extension";
+import {setExtension} from "../config/program_settings/set_extension";
 
 
 export class Router {

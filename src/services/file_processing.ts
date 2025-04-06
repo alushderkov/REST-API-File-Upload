@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-type TReqUrl = string | undefined;
+export type TReqUrl = string | undefined;
 
 interface QueryParams {
   path?: string;

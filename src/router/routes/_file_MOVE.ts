@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { Route } from "../route_interface";
 import { Controller } from "../../controller/Controller";
-import {isMatchesWithRegExp} from "../check_url";
+import {isMatchesWithRegExp} from "../../config/program_settings/check_url";
 
 export const fileMoveRoute: Route = {
 

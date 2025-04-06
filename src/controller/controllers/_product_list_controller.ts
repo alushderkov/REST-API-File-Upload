@@ -1,8 +1,8 @@
 import path from "path";
 import { IncomingMessage, ServerResponse } from "http";
 import { addProduct, parseCsv, CsvRow } from "../../models/product_list_representation";
-import { throwError } from "./error";
-import { setExtension } from "../../config/set_extension";
+import { throwError } from "../../config/program_settings/error";
+import { setExtension } from "../../config/program_settings/set_extension";
 import { calcLowPrice } from "../../services/product_list_processing";
 
 
@@ -11,8 +11,6 @@ const listCsvPath: string = path.join(__dirname, "../../data/list.csv");
 export function accessProductList(req: IncomingMessage, res: ServerResponse): void {
 
   function getProductList(ext: string): void {
-    const contentType: string = setExtension(ext);
-
     const whenCsvGot: Promise< CsvRow[] > = parseCsv(listCsvPath);
     let products: Array<CsvRow>;
 
@@ -24,17 +22,16 @@ export function accessProductList(req: IncomingMessage, res: ServerResponse): vo
         );
 
         res.statusCode = 200;
-        res.setHeader("Content-Type", contentType);
+        res.setHeader( "Content-Type", setExtension(ext) );
         res.end( JSON.stringify(products) );
       },
       error => {
-        throwError(res, error, 500);
+        throwError(res, error, 500, ext);
       }
     );
   }
 
   function addToProductList(ext: string): void {
-    const contentType: string = setExtension(ext);
 
     if (req.url) {
       const productData: string = req.url.replace('/api/product_list/', '');
@@ -48,11 +45,11 @@ export function accessProductList(req: IncomingMessage, res: ServerResponse): vo
           const newProduct: CsvRow = result;
 
           res.statusCode = 201;
-          res.setHeader("Content-Type", contentType);
+          res.setHeader( "Content-Type", setExtension(ext) );
           res.end( JSON.stringify(newProduct) );
         },
         error => {
-          throwError(res, error, 501);
+          throwError(res, error, 501, ext);
         }
       );
 

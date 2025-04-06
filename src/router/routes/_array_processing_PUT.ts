@@ -1,10 +1,11 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { Route } from "../route_interface";
 import { Controller } from "../../controller/Controller";
+import {isMatchesWithRegExp} from "../../config/program_settings/check_url";
 
 export const arrayProcessingRoute: Route = {
 
-  url: "api/process_array",
+  url: /^\/api\/array\?(\[\d+\])+$/,
   method: "PUT",
 
   controller: function(req: IncomingMessage, res: ServerResponse): void {
@@ -12,12 +13,6 @@ export const arrayProcessingRoute: Route = {
   },
 
   isMatchesWithURL: function(reqURL: string): boolean {
-    let result: boolean = false;
-
-    if (this.url === reqURL) {
-      result = true;
-    }
-
-    return result;
+    return isMatchesWithRegExp(reqURL, this.url);
   }
 }
