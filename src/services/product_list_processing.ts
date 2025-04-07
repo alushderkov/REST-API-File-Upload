@@ -1,4 +1,4 @@
-import {CsvRow} from "../models/product_list_representation";
+import { CsvRow } from "../models/product_list_representation";
 import fs from "fs";
 import { stringify } from 'csv-stringify'
 
