@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { Route } from "../../config/program_settings/route_interface";
 import { Controller } from "../../controller/Controller";
-import {isMatchesWithString} from "../../config/program_settings/check_url";
+import { isMatchesWithString } from "../../config/program_settings/check_url";
 
 export const getProductListRoute: Route = {
 

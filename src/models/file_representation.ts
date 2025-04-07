@@ -1,4 +1,4 @@
-import {IncomingMessage} from "http";
+import { IncomingMessage } from "http";
 import { deleteFile, copyFile, moveFile, parseQuery } from "../services/file_processing";
 
 export async function deleteByURL(req: IncomingMessage): Promise<string> {
@@ -13,6 +13,7 @@ export async function deleteByURL(req: IncomingMessage): Promise<string> {
         () => { resolve(`File "${path}" was successfully deleted`); },
         error=> reject(error)
       );
+
     } else {
       reject( new Error(`Path "${path}" is incorrect`) );
     }
@@ -32,6 +33,7 @@ export async function moveByURL(req: IncomingMessage): Promise<string> {
         () => { resolve(`File moved from "${from}" to "${to}"`); },
         error => reject(error)
       );
+
     } else {
       reject( new Error(`Paths "${from}" and "${to}" are incorrect`) );
     }
@@ -51,6 +53,7 @@ export async function copyByURL(req: IncomingMessage): Promise<string> {
         () => { resolve(`File copied from "${from}" to "${to}"`); },
         error => reject(error)
       );
+
     } else {
       reject( new Error(`Paths "${from}" and "${to}" are incorrect`) );
     }

@@ -10,13 +10,23 @@ const listCsvPath: string = path.join(__dirname, "../../data/list.csv");
 
 export function accessProductList(req: IncomingMessage, res: ServerResponse): void {
 
+  switch (req.method) {
+    case "GET": getProductList(".json");
+      break;
+
+    case "POST": addToProductList(".json");
+      break;
+
+    default: console.log(`${req.method} request was given`);
+  }
+
   function getProductList(ext: string): void {
-    const whenCsvGot: Promise< CsvRow[] > = parseCsv(listCsvPath);
+    const whenCsvGot: Promise<CsvRow[]> = parseCsv(listCsvPath);
     let products: Array<CsvRow>;
 
     whenCsvGot.then(
-
       result => {
+
         products = result.map(product =>
           ( { ...product, lowPrice: calcLowPrice(product) } )
         );
@@ -56,15 +66,5 @@ export function accessProductList(req: IncomingMessage, res: ServerResponse): vo
     } else {
       console.log(`There is no request ${req.url}`)
     }
-  }
-
-  switch (req.method) {
-    case "GET": getProductList(".json");
-    break;
-
-    case "POST": addToProductList(".json");
-    break;
-
-    default: console.log(`${req.method} request was given`);
   }
 }

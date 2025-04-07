@@ -1,5 +1,4 @@
-import path from "path";
-import {IncomingMessage} from "http";
+import { IncomingMessage } from "http";
 
 import { getElementByIndexes,
          parseIndexes,
@@ -12,9 +11,9 @@ import { parseRequestBody,
 from "../services/array_processing";
 
 export async function modifyArrayElement(req: IncomingMessage, filePath: string):
-  Promise< { oldValue: any, newValue: any } > {
+  Promise<{ oldValue: any, newValue: any }> {
 
-  return new Promise(async (resolve: any, reject: any) => {
+  return new Promise( async (resolve: any, reject: any) => {
     const indexes: Array<number> = parseIndexes( req.url! );
 
     if (indexes.length === 0) {

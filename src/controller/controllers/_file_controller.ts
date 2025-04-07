@@ -1,9 +1,22 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { throwError } from "../../config/program_settings/error";
 import { setExtension } from "../../config/program_settings/set_extension";
-import {copyByURL, deleteByURL, moveByURL} from "../../models/file_representation";
+import { copyByURL, deleteByURL, moveByURL } from "../../models/file_representation";
 
 export function workWithFile(req: IncomingMessage, res: ServerResponse): void {
+
+  switch (req.method) {
+    case "DELETE": deleteFile(".json");
+      break;
+
+    case "PUT": moveFile(".json");
+      break;
+
+    case "POST": copyFile(".json");
+      break;
+
+    default: console.log(`${req.method} request was given`);
+  }
 
   function deleteFile(ext: string): void {
     const whenFileWasDeleted: Promise<string> = deleteByURL(req);
@@ -42,18 +55,5 @@ export function workWithFile(req: IncomingMessage, res: ServerResponse): void {
     res.statusCode = statusCode;
     res.setHeader( "Content-Type", setExtension(ext) );
     res.end( JSON.stringify(message) );
-  }
-
-  switch (req.method) {
-    case "DELETE": deleteFile(".json");
-    break;
-
-    case "PUT": moveFile(".json");
-    break;
-
-    case "POST": copyFile(".json");
-    break;
-
-    default: console.log(`${req.method} request was given`);
   }
 }
