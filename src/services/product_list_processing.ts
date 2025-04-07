@@ -26,6 +26,7 @@ export async function writeToCsvFile(filePath: string, newList: Array<CsvRow>): 
 
     csvStringifier.pipe(writeStream);
     newList.forEach( (row: CsvRow) => csvStringifier.write(row) );
+
     csvStringifier.end();
   });
 }

@@ -9,6 +9,7 @@ export async function readArrayFromFile(filePath: string): Promise< Array<any> >
     result = JSON.parse(data);
 
   } catch (error) {
+
     throw new Error(
       `Failed to read array: ${ error instanceof Error ? error.message : String(error) }`
     );
@@ -22,6 +23,7 @@ export async function writeArrayToFile( filePath: string, array: Array<any> ): P
     await fs.writeFile( filePath, JSON.stringify(array, null, 2) );
 
   } catch (error) {
+
     throw new Error(
       `Failed to write array: ${ error instanceof Error ? error.message : String(error) }`
     );

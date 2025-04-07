@@ -16,6 +16,7 @@ export async function deleteFile(filePath: string): Promise<void> {
     await fs.unlink(filePath);
 
   } catch (error) {
+
     throw new Error(
       `Failed to delete file: ${ error instanceof Error ? error.message : String(error) }`
     );
@@ -29,6 +30,7 @@ export async function moveFile(sourcePath: string, destinationPath: string): Pro
     await fs.rename(sourcePath, destinationPath);
 
   } catch (error) {
+
     throw new Error(
       `Failed to move file: ${ error instanceof Error ? error.message : String(error) }`
     );
@@ -42,6 +44,7 @@ export async function copyFile(sourcePath: string, destinationPath: string): Pro
     await fs.copyFile(sourcePath, destinationPath);
 
   } catch (error) {
+
     throw new Error(
       `Failed to copy file: ${ error instanceof Error ? error.message : String(error) }`
     );
@@ -53,7 +56,7 @@ export function parseQuery(url: TReqUrl): QueryParams {
   function setIfExists(
     params: URLSearchParams, target: QueryParams, ...keys: (keyof QueryParams)[]
   ) {
-    keys.forEach(k => params.has(k) && (target[k] = params.get(k)!));
+    keys.forEach( k => params.has(k) && ( target[k] = params.get(k)! ) );
   }
 
   let result: QueryParams = {};
