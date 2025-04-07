@@ -69,19 +69,18 @@ tsconfig.json
 
 ## 💿 API Examples
 
-> #### &nbsp;🗀 Copy a file: ```POST /api/files/copy?from=source.txt&to=destination.txt```
+#### &nbsp;🗀 Copy a file: ```POST /api/files/copy?from=source.txt&to=destination.txt```
 
-> #### &nbsp;🗀 Move a file: ```PUT /api/files/move?from=source.txt&to=destination.txt```
+#### &nbsp;🗀 Move a file: ```PUT /api/files/move?from=source.txt&to=destination.txt```
 
-> #### &nbsp;🗀 Delete a file: ```DELETE /api/files?path=file_to_delete.txt```
+#### &nbsp;🗀 Delete a file: ```DELETE /api/files?path=file_to_delete.txt```
 
-> #### 📡 Get products: ```GET /api/product_list/```
+#### 📡 Get products: ```GET /api/product_list/```
 
-> #### 📡 Add a product: ```POST /api/product_list/ProductName,10$,Description```
+#### 📡 Add a product: ```POST /api/product_list/ProductName,10$,Description```
 
-> ####  📡️ Update an array element: ```PUT /api/array?[0][1][2]```
-> Content-Type: `application/json`
-> Body: `{ "newValue": "example" }`
+####  📡️ Update an array element: ```PUT /api/array?[0][1][2]```
+> Content-Type: `application/json` Body: `{ "newValue": "example" }`
 
 <br>
 
