@@ -80,7 +80,7 @@ tsconfig.json
 #### 📡 Add a product: ```POST /api/product_list/ProductName,10$,Description```
 
 ####  📡️ Update an array element: ```PUT /api/array?[0][1][2]```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Content-Type: `application/json`, body: `{ "newValue": "example" }`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Content-Type: application/json```&nbsp;&nbsp;```Body: { "newValue": "example" }```
 
 <br>
 
