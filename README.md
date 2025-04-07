@@ -20,7 +20,7 @@
 ### 🎼 Array Operations
 - 🎚️ Update an array element by nested indexes: `PUT /api/array?[index1][index2]...`
 
----
+<br>
 
 ## 🪽 Getting Started
 
@@ -44,7 +44,7 @@
    
 &nbsp;&nbsp;&nbsp;The server will be available at `http://localhost:5500` unless the `PORT` environment variable is set.
 
----
+<br>
 
 ## 🗀 Project Structure
 
@@ -65,7 +65,7 @@ package-lock.json
 tsconfig.json
 </pre>
 
----
+<br>
 
 ## 💿 API Examples
 
@@ -83,7 +83,7 @@ tsconfig.json
 > Content-Type: `application/json`
 > Body: `{ "newValue": "example" }`
 
----
+<br>
 
 ## 🔗 Dependencies
 
@@ -97,7 +97,7 @@ tsconfig.json
 - [`ts-node`](https://www.npmjs.com/package/ts-node) — runs TypeScript files directly without precompiling
 - [`nodemon`](https://www.npmjs.com/package/nodemon) — automatically restarts the app on file changes
 
----
+<br>
 
 ## ⚙️ Customization
 
@@ -108,7 +108,7 @@ export PORT=3000
 npm start
 ```
 
----
+<br>
 
 ## 🧬 License
 
