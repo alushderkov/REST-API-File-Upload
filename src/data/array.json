@@ -1,14 +1,7 @@
 [
   [
     [
-      {
-        "id": 1,
-        "value": "Apple",
-        "tags": [
-          "fruit",
-          "red"
-        ]
-      },
+      1888,
       {
         "id": 2,
         "value": "Banana",
