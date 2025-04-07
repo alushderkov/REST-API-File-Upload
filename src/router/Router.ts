@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
-import {Route} from "./route_interface";
+import {Route} from "../config/program_settings/route_interface";
 import { routes } from "./routes/_all_routes";
 import {setExtension} from "../config/program_settings/set_extension";
 

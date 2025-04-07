@@ -29,7 +29,7 @@ export async function moveByURL(req: IncomingMessage): Promise<string> {
       const whenMoved: Promise<void> = moveFile(from, to);
 
       whenMoved.then(
-        () => { resolve(`File copied from "${from}" to "${to}"`); },
+        () => { resolve(`File moved from "${from}" to "${to}"`); },
         error => reject(error)
       );
     } else {

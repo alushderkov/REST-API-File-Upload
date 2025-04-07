@@ -1,4 +1,4 @@
-import { Route } from "../route_interface";
+import { Route } from "../../config/program_settings/route_interface";
 import { arrayProcessingRoute } from "./_array_processing_PUT";
 import { fileCopyRoute } from "./_file_COPY";
 import { fileDeleteRoute } from "./_file_DELETE";

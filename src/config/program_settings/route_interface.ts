@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from "http";
 export type TUrl = string | RegExp;
-type TRequest = "GET" | "POST" | "PUT" | "COPY" | "DELETE" | "MOVE";
+type TRequest = "GET" | "POST" | "PUT" ;
 
 export interface Route {
   url: TUrl;

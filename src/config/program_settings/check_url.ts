@@ -1,4 +1,4 @@
-import {TUrl} from "../../router/route_interface";
+import {TUrl} from "./route_interface";
 
 export function isMatchesWithString(reqURL: string, validURL: TUrl): boolean {
   let result: boolean = false;

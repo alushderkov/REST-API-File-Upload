@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { Route } from "../route_interface";
+import { Route } from "../../config/program_settings/route_interface";
 import { Controller } from "../../controller/Controller";
 import {isMatchesWithRegExp} from "../../config/program_settings/check_url";
 
